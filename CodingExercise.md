@@ -1,6 +1,6 @@
 # Coding Exercise
 
-## 1. What is the output of below code
+### 1. What is the output of below code
 
 ```javascript
 var car = new Vehicle("Honda", "white", "2010", "UK");
@@ -13,15 +13,15 @@ function Vehicle(model, color, year, country) {
   this.country = country;
 }
 ```
-
-● 1: Undefined
-● 2: ReferenceError
-● 3: null
-● 4: {model: "Honda", color: "white", year: "2010", country: "UK"}
-
-Answers
-
 ```html
+<ol>
+	<li>1: Undefined</li>
+	<li>2: ReferenceError</li>
+	<li>3: null</li>
+	<li>4: {model: "Honda", color: "white", year: "2010", country: "UK"}</li>
+</ol>
+
+<b>Answers</b>
 <details>
   <p>
     Answer: 4 <br />
@@ -31,7 +31,7 @@ Answers
 </details>
 ```
 
-## 2. What is the output of below code
+### 2. What is the output of below code
 
 ```javascript
 function foo() {
@@ -42,13 +42,15 @@ function foo() {
 }
 console.log(foo(), typeof x, typeof y);
 ```
-
-● 1: 1, undefined and undefined
-● 2: ReferenceError: X is not defined
-● 3: 1, undefined and number
-● 4: 1, number and number
-
-## 3. What is the output of below code
+```html
+<ol>
+	<li>1: 1, undefined and undefined</li>
+	<li>2: ReferenceError: X is not defined</li>
+	<li>3: 1, undefined and number</li>
+	<li>4: 1, number and number</li>
+</ol>
+```
+### 3. What is the output of below code
 
 ```javascript
 function main() {
@@ -60,17 +62,22 @@ function main() {
 }
 main();
 ```
-
-● 1: A, B and C
-● 2: B, A and C
-● 3: A and C
-● 4: A, C and B
-
-## 4. What is the output of below equality check
+```html
+<ol>
+	<li>1: A, B and C</li>
+	<li>2: B, A and C</li>
+	<li>3: A and C</li>
+	<li>4: A, C and B</li>
+</ol>
+```
+### 4. What is the output of below equality check
 
 ```javascript
 console.log(0.1 + 0.2 === 0.3);
 ```
-
-● 1: false
-● 2: true
+```html
+<ol>
+	<li>1: false</li>
+	<li>2: true</li>
+</ol>
+```
