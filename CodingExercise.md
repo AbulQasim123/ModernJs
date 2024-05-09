@@ -20,8 +20,8 @@ function Vehicle(model, color, year, country) {
 4: {model: "Honda", color: "white", year: "2010", country: "UK"} <br>
 
 <details>
-<summary>Answer</summary>
-<b>Answer: 4</b> <br>
+<summary>Answer</summary><br>
+<b>Answer: 4</b> <br><br>
     The function declarations are hoisted similar to any variables. So the
     placement for Vehicle function declaration doesn't make any difference.
 </details>
