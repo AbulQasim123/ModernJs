@@ -51,6 +51,7 @@ console.log(foo(), typeof x, typeof y);
 <b>Answer: 3</b> <br><br>
     Of course the return value of foo() is 1 due to the increment operator. But the statement let x = y = 0 declares a local variable x. Whereas y declared as a global variable accidentally. This statement is equivalent to,
 </details>
+
 ### 3. What is the output of below code
 
 ```javascript
