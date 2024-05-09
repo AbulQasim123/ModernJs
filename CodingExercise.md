@@ -13,23 +13,20 @@ function Vehicle(model, color, year, country) {
   this.country = country;
 }
 ```
-```html
-<ol>
-	<li>1: Undefined</li>
-	<li>2: ReferenceError</li>
-	<li>3: null</li>
-	<li>4: {model: "Honda", color: "white", year: "2010", country: "UK"}</li>
-</ol>
 
-<b>Answers</b>
+1: Undefined <br>
+2: ReferenceError <br>
+3: null <br>
+4: {model: "Honda", color: "white", year: "2010", country: "UK"} <br>
+
 <details>
-  <p>
-    Answer: 4 <br />
+Answers
+<summary>
+Answer: 4 <br>
     The function declarations are hoisted similar to any variables. So the
     placement for Vehicle function declaration doesn't make any difference.
-  </p>
+</summary>
 </details>
-```
 
 ### 2. What is the output of below code
 
@@ -42,14 +39,12 @@ function foo() {
 }
 console.log(foo(), typeof x, typeof y);
 ```
-```html
-<ol>
-	<li>1: 1, undefined and undefined</li>
-	<li>2: ReferenceError: X is not defined</li>
-	<li>3: 1, undefined and number</li>
-	<li>4: 1, number and number</li>
-</ol>
-```
+
+1: 1, undefined and undefined <br>
+2: ReferenceError: X is not defined <br>
+3: 1, undefined and number <br>
+4: 1, number and number <br>
+
 ### 3. What is the output of below code
 
 ```javascript
@@ -62,22 +57,17 @@ function main() {
 }
 main();
 ```
-```html
-<ol>
-	<li>1: A, B and C</li>
-	<li>2: B, A and C</li>
-	<li>3: A and C</li>
-	<li>4: A, C and B</li>
-</ol>
-```
+
+1: A, B and C  <br>
+2: B, A and C  <br>
+3: A and C  <br>
+4: A, C and B  <br>
+
 ### 4. What is the output of below equality check
 
 ```javascript
 console.log(0.1 + 0.2 === 0.3);
 ```
-```html
-<ol>
-	<li>1: false</li>
-	<li>2: true</li>
-</ol>
-```
+
+1: false  <br>
+2: true  <br>
