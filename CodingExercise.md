@@ -22,7 +22,7 @@ function Vehicle(model, color, year, country) {
 
 <details>
 <summary>Answer</summary><br>
-<b>Answer: 4</b> <br>
+<b>Answer: 4</b> <br><br>
     The function declarations are hoisted similar to any variables. So the
     placement for Vehicle function declaration doesn't make any difference.
 </details>
@@ -48,7 +48,7 @@ console.log(foo(), typeof x, typeof y);
 
 <details>
 <summary>Answer</summary><br>
-<b>Answer: 3</b> <br>
+<b>Answer: 3</b> <br><br>
     Of course the return value of foo() is 1 due to the increment operator. But the statement let x = y = 0 declares a local variable x. Whereas y declared as a global variable accidentally. This statement is equivalent to,
 </details>
 ### 3. What is the output of below code
@@ -73,7 +73,7 @@ main();
 
 <details>
 <summary>Answer</summary><br>
-<b>Answer: 4</b> <br>
+<b>Answer: 4</b> <br><br>
     The statements order is based on the event loop mechanism. The order of statements follows the below order, <br>
 	<ul>
 		<li>1. At first, the main function is pushed to the stack.</li>
@@ -99,6 +99,6 @@ console.log(0.1 + 0.2 === 0.3);
 </ul>
 <details>
 <summary>Answer</summary><br>
-<b>Answer: 1</b> <br>
+<b>Answer: 1</b> <br><br>
     This is due to the float point math problem. Since the floating point numbers are encoded in binary format, the addition operations on them lead to rounding errors. Hence, the comparison of floating points doesn't give expected results. You can find more details about the explanation here 0.30000000000000004.com/
 </details>
