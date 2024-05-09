@@ -21,11 +21,9 @@ function Vehicle(model, color, year, country) {
 
 <details>
 Answers
-<summary>
 Answer: 4 <br>
     The function declarations are hoisted similar to any variables. So the
     placement for Vehicle function declaration doesn't make any difference.
-</summary>
 </details>
 
 ### 2. What is the output of below code
