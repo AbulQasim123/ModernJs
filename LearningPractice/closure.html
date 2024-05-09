@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clousure Function</title>
+</head>
+
+<body>
+    <script>
+        // let c = 20;
+        // const outerFunction = (a) => {
+        //     let b = 20;
+        //     const innerFunction = () => {
+        //         let sum = a + b + c;
+        //         console.log(`I'm an inner function ${sum}`);
+        //     };
+        //     return innerFunction;
+        // };
+
+        // let inner = outerFunction(5);
+        // console.dir(inner);
+        // inner();
+
+        const interviewQuestion = (name) =>{
+            return function(topic){
+                if(name === "John"){
+                    console.log(`Hello ${name}, Explaining about ${topic}?`);
+                }
+                else if(name === "Vinod"){
+                    console.log(`Hello ${name}, Explaining about ${topic}?`);
+                }
+                else if(name === "Rahul"){
+                    console.log(`Hello ${name}, Explaining about ${topic}?`);
+                }
+                else{
+                    console.log(`Hello ${name}, Explaining about ${topic}?`);
+                }
+            }
+        }
+
+        // interviewQuestion('John')('Frontend');
+        // interviewQuestion('John')('Backend');
+        // interviewQuestion('John')('Fullstack');
+
+        let firsCan = interviewQuestion('John');
+        firsCan("CSS");
+        firsCan("Jquery");
+        let secondCan = interviewQuestion('Vinod');
+        secondCan("Javascript");
+        secondCan("Java");
+        let thirdCan = interviewQuestion('Rahul');
+        thirdCan("Angular");
+        thirdCan("React");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind</title>
+</head>
+
+<body>
+    <button>Clicked me</button>
+    <script>
+        // Bind Example
+        class React {
+            constructor() {
+                this.library = "React";
+                this.server = "https://localhost:3000";
+                document
+                    .querySelector("button")
+                    .addEventListener("click", this.handleClick.bind(this));
+            }
+            handleClick() {
+                console.log("button Clicked");
+                console.log(`This ${this.library} library is best and running on this localhost url ${this.server}`);
+                console.log(this);
+            }
+        }
+        const reactObj = new React();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call By value and Call By Reference</title>
+</head>
+
+<body>
+    <script>
+        // let obj1 = {
+        //     user: "Hello",
+        //     pass: "Password",
+        // }
+        // let obj2 = obj1;
+        // obj2.pass = "KuchBhi";
+        // console.log(obj1);
+        // console.log(obj2);
+
+        // let arr1 = [1,2,3,4];
+        // let arr2 = [].concat(arr1);
+        // arr2.push(5,6,7,8);
+        // console.log(arr1);
+        // console.log(arr2);
+
+
+        // Exercise
+        let likes = 100;
+        const youtube = {
+            name: "ThapaTechnical",
+            subs: 98000
+        } 
+
+        const thapa = (a,b) => {
+            a = 200;
+            console.log(a);
+            b.subs = 10000
+        }
+        thapa(likes,youtube);
+        console.log(likes);
+        console.log(youtube.subs);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Destructuring</title>
+</head>
+<body>
+    <script>
+        // es5
+        // const bioData = {
+        //     name : "Nikhil",
+        //     age : 22,
+        //     degree : "Bachelor",
+        //     college : "IIT Bombay"
+        // }
+        // console.log(`Name : ${bioData.name} , Age : ${bioData.age} , Degree : ${bioData.degree} , College : ${bioData.college}`);
+
+        // es6
+        // const bioData = {
+        //     name : "Nikhil",
+        //     age : 22,
+        //     degree : "Bachelor",
+        //     college : "IIT Bombay"
+        // }
+        // let {name,age,degree,college} = bioData;
+        // console.log(`Name : ${name} , Age : ${age} , Degree : ${degree} , College : ${college}`);
+
+        // es6
+        const bioData = {
+            name : "Nikhil",
+            age : 22,
+            degree : "Bachelor",
+            college : "IIT Bombay",
+            hobby: {
+                sports: "Cricket",
+                music: "South Indian",
+                dance: "Hiphop",
+                food: "Indian"
+            }
+        } 
+        let {name,age,degree,college,hobby} = bioData;
+        console.log(`Name : ${name} , Age : ${age} , Degree : ${degree} , College : ${college}. I love playing: ${hobby.sports} music: ${hobby.music} dance: ${hobby.dance} food: ${hobby.food}`);
+    </script>
+</body>
+</html>

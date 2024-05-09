@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scramble game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 100%;
+            line-height: 15vh;
+            background-color: #20bf6b;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 15px;
+            text-shadow: 0 1px 0 #efefef, 0 2px 0 #efefef, 0 3px 0 #efefef,
+                0 4px 0 #efefef, 0 30px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #7bed9f;
+        }
+
+        .gameArea {
+            width: 50%;
+            height: 400px;
+            padding: 20px 0;
+            background-color: #2ed573;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 8px 6px -6px black;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        input {
+            width: 400px;
+            padding: 15px 0;
+            text-align: center;
+            border-radius: 25px;
+            outline: none;
+            border: none;
+            background-color: #dff9fb;
+            color: black;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        button {
+            font-size: 1rem;
+            cursor: pointer;
+            border: #2f3542;
+            margin-top: 10px;
+            color: #eb4d4b;
+            border-radius: 5px;
+        }
+
+        button.btn {
+            font-weight: 600;
+            padding: 1rem 2rem;
+            background-color: white;
+            text-transform: uppercase;
+            transition-property: all;
+            transition-duration: 0.5s;
+            transition-timing-function: cubic-bezier(0.65, -0.25, 0.25, 1.95);
+        }
+
+        button.btn:hover,
+        button.btn:focus,
+        button.btn:active {
+            letter-spacing: 0.125rem;
+            word-spacing: 0.2rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* .error-message {
+            color: red;
+            margin-top: 5px;
+        } */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Guess the word game</h1>
+    </header>
+    <section>
+        <div class="gameArea">
+            <h3 class="msg"></h3>
+            <input type="text" id="guess" required="required" class="hidden"/>
+            <div id="error-message" class="error-message hidden"></div>
+            <button type="submit" class="btn">Click here to start</button>
+        </div>
+    </section>
+    <script>
+        const message = document.querySelector(".msg");
+        const userInput = document.querySelector("input");
+        const button = document.querySelector(".btn");
+
+        let play = false;
+        let newWords = "";
+        let randomWords = "";
+        let sWords = [
+            "abandoned",
+            "absurdity",
+            "adamantine",
+            "adequately",
+            "adulterate",
+            "advantages",
+            "afterwards",
+            "aggravated",
+            "alleviates",
+            "amplifiers",
+            "animations",
+            "apologizes",
+            "appetizers",
+            "approaches",
+            "architects",
+            "artificial",
+            "assemblies",
+            "assurances",
+            "atmosphere",
+            "attentions",
+            "barbarians",
+            "beleaguered",
+            "benevolent",
+            "bifurcated",
+            "binoculars",
+            "blandishes",
+            "bloodhound",
+            "bulldozers",
+            "calibration",
+            "candlestick",
+            "cantonment",
+            "celebrated",
+            "centerfold",
+            "ceremonies",
+            "charioteer",
+            "chemistry",
+            "chimpanzee",
+            "chivalrous",
+            "circulates",
+            "claustropho",
+            "collections",
+            "commencing",
+            "competence",
+            "completion",
+            "concoction",
+            "concurrent",
+            "confession",
+            "confidante",
+            "conformity",
+            "congruence",
+            "coniferous",
+            "conjugated",
+            "conjunction",
+            "conserving",
+            "conspirator",
+            "constantly",
+            "constrains",
+            "containers",
+            "contemplate",
+            "continuity",
+            "corresponds",
+            "cosmopolitan",
+            "counteract",
+            "counterfeit",
+            "courteously",
+            "cylindrical",
+            "daffodils",
+            "deactivate",
+            "decisively",
+            "defamation",
+            "defeasible",
+            "delectable",
+            "democratic",
+            "dependency",
+            "descendant",
+            "destabilize",
+            "detectable",
+            "determines",
+            "deterrence",
+            "developing",
+            "dexterity",
+            "dilapidate",
+            "disastrous",
+            "disbeliever",
+            "discipline",
+            "disembark",
+            "dishwasher",
+            "disparaging",
+            "divisiveness",
+            "dumbwaiter",
+            "dynamometer",
+            "educational",
+            "effortless",
+            "elegancies",
+            "eligibility",
+            "eliminated",
+            "emaciation",
+            "embarkation",
+            "embraceable",
+            "employment",
+            "enervating",
+            "engagements",
+            "enthusiasm",
+            "epistemology",
+            "equanimity",
+            "erroneously",
+            "evacuating",
+            "eventually",
+            "exacerbate",
+            "exaggerate",
+            "examination",
+            "exceedingly",
+            "exceptional",
+            "exhortation",
+            "expediently",
+            "experiences",
+            "explanatory",
+            "expressible",
+            "extensively",
+            "extravagant",
+            "facetiously",
+            "fantasizing",
+            "fearfulness",
+            "felicitation",
+            "ferociously",
+            "flabbergast",
+            "foreclosure",
+            "formulation",
+            "forswearing",
+            "friendships",
+            "fumigations",
+            "functioned",
+            "fundamental",
+            "generically",
+            "geographer",
+            "geological",
+            "germination",
+            "glamorously",
+            "governments",
+            "gracelessly",
+            "gravitation",
+            "gregarious",
+            "gyroscope",
+            "habitually",
+            "hallucinate",
+            "handsomely",
+            "harmonizing",
+            "headquarters",
+            "heartbreak",
+            "hemorrhage",
+            "hesitantly",
+            "hippopotamus",
+            "historical",
+            "homogeneous",
+            "humiliated",
+            "hydraulics",
+            "hyperventilate",
+            "idealistic",
+            "identifying",
+            "ignominious",
+            "illuminated",
+            "illustrate",
+            "imaginary",
+            "imbibitions",
+            "immediate",
+            "immobilize",
+            "impairment",
+            "impartially",
+            "imposingly",
+            "impregnate",
+            "inadvertent",
+            "inaugurate",
+            "incapacitate",
+            "incessantly",
+            "inconspicuous",
+            "incremental",
+            "inculcated",
+            "indescribable",
+            "indicators",
+            "individuals",
+            "indulgently",
+            "inefficient",
+            "inferential",
+            "infidelity",
+            "ingeniously",
+            "inhibition",
+            "initializing",
+            "innocuously",
+            "inquisitive",
+            "insatiable",
+            "insensitive",
+            "insinuating",
+            "insinuations",
+            "inspectorate",
+            "instigating",
+            "integrated",
+            "intentional",
+            "interacting",
+            "interceding",
+            "interceptor",
+            "interchange",
+            "intercourse",
+            "interjected",
+            "interlacing",
+            "international",
+            "interpolate",
+            "interracial",
+            "interruption",
+            "intervention",
+            "intolerable",
+            "introduction",
+            "introspects",
+            "invagination",
+            "investigate",
+            "invidiously",
+            "involuntary",
+            "irrefutable",
+            "irrelevant",
+            "juxtaposing",
+            "kaleidoscope",
+            "keenwitted",
+            "kitchenware",
+            "lamentation",
+            "landscape",
+            "laughingly",
+            "lighthearted",
+            "literature",
+            "luxuriously",
+            "magnanimous",
+            "maintaining",
+            "manipulated",
+            "marionettes",
+            "masterfully",
+            "materialize",
+            "melancholic",
+            "metabolized",
+            "methodology",
+            "microphone",
+            "minimization",
+            "miscellaneous",
+            "mischievous",
+            "mobilization",
+            "moderations",
+            "momentarily",
+            "multifaceted",
+            "narratology",
+            "negotiating",
+            "neighborhood",
+            "neurological",
+            "neutralizes",
+            "nonchalantly",
+            "nonetheless",
+            "normalizing",
+            "noteworthy",
+            "nourishment",
+            "numerically",
+            "objectionable",
+            "obligations",
+            "observatory",
+            "obstruction",
+            "occasionally",
+            "omnipotence",
+            "opportunist",
+            "organization",
+            "ornamenting",
+            "outlandishly",
+            "overbearing",
+            "overwhelming",
+            "paleolithic",
+            "parachuting",
+            "paranoia",
+            "participate",
+            "particularly",
+            "pathological",
+            "penetrating",
+            "performance",
+            "perpetuates",
+            "personifies",
+            "persuasions",
+            "perversions",
+            "phosphorous",
+            "picturesque",
+            "plausibility",
+            "pleasurable",
+            "polygraphed",
+            "polytheistic",
+            "populace",
+            "positively",
+            "praiseworthy",
+            "predicament",
+            "preemption",
+            "preferential",
+            "prejudicial",
+            "preoccupied",
+            "preparatory",
+            "prescription",
+            "prevaricate",
+            "primogenitor",
+            "prisoners",
+            "probabilities",
+            "proclamation",
+            "procrastinate",
+            "profanities",
+            "prohibitive",
+            "prohibitory",
+            "projectile",
+            "proliferate",
+            "promiscuous",
+            "pronunciation",
+            "propagation",
+            "propositions",
+            "prospective",
+            "protagonist",
+            "providential",
+            "pseudonymous",
+            "psychiatric",
+            "psychotropic",
+            "puerilely",
+            "punctuality",
+            "quadrilateral",
+            "qualitative",
+            "quantitative",
+            "questionable",
+            "questionnaire",
+            "quintessential",
+            "quotability",
+            "rambunctious",
+            "rationality",
+            "rebelliously",
+            "reclamation",
+            "recommending",
+            "reconnaissance",
+            "rectangular",
+            "recuperates",
+            "redirection",
+            "reestablish",
+            "refractometer",
+            "refrigerator",
+            "regenerates",
+            "reinforcement",
+            "rejuvenated",
+            "relativistic",
+            "relocation",
+            "remarketing",
+            "renumerated",
+            "reorganizing",
+            "repellently",
+            "representative",
+            "reproduction",
+            "reproachful",
+            "requisitioned",
+            "resurrection",
+            "retroactively",
+            "reverberate",
+            "revolutionize",
+            "rheumatology",
+            "ridiculously",
+            "righteousness",
+            "rumination",
+            "salutations",
+            "sanctimonious",
+            "sarcastic",
+            "schematized",
+            "scholarship",
+            "scriptwriter",
+            "scurrilously",
+            "segregating",
+            "sentimental",
+            "sequestered",
+            "serendipity",
+            "serviceman",
+            "simultaneously",
+            "sophisticate",
+            "specializing",
+            "spectacular",
+            "spirituality",
+            "spontaneity",
+            "stationary",
+            "sterilizing",
+            "stipulations",
+            "stupendously",
+            "subcontinent",
+            "subjugation",
+            "subordinated",
+            "subsequently",
+            "substantially",
+            "substantiate",
+            "successful",
+            "succinctly",
+            "sufficiently",
+            "suggestions",
+            "superfluous",
+            "superiority",
+            "surrounding",
+            "sympathetic",
+            "synchronization",
+            "systematize",
+            "tabernacles",
+            "technologies",
+            "television",
+            "tenaciously",
+            "terminology",
+            "testamentary",
+            "testimonial",
+            "therapeutic",
+            "thoroughly",
+            "timekeeping",
+            "topographical",
+            "totalitarian",
+            "traditionally",
+            "transaction",
+            "transcribing",
+            "transfigured",
+            "transforming",
+            "translational",
+            "transparency",
+            "transporting",
+            "traumatized",
+            "tumultuous",
+            "tyrannical",
+            "ultimately",
+            "understanding",
+        ];
+
+        const createNewWords = () => {
+            let ranNum = Math.floor(Math.random() * sWords.length);
+            let newTempWords = sWords[ranNum];
+            // console.log(newTempWords.split(""));
+            return newTempWords;
+        };
+
+        const scrambleWords = (arr) => {
+            for (let i = arr.length - 1; i > 0; i--) {
+                let temp = arr[i];
+                let j = Math.floor(Math.random() * (i + 1));
+                // console.log(temp);
+                // console.log(i);
+                // console.log(j);
+                arr[i] = arr[j];
+                arr[j] = temp;
+                return arr;
+            }
+        };
+
+        button.addEventListener("click", function (e) {
+            e.preventDefault();
+            if (!play) {
+                play = true;
+                button.innerHTML = "Guess";
+                userInput.classList.toggle("hidden");
+                newWords = createNewWords();
+                // console.log(newWords);
+                randomWords = scrambleWords(newWords.split("")).join("");
+                // console.log(randomWords.join(""));
+                message.textContent = `Guess the word: ${randomWords}`;
+            } else {
+                let tempWord = userInput.value;
+                if (tempWord === newWords) {
+                    play = false;
+                    message.textContent = `Awesome It's Correct. it is ${newWords}`;
+                    button.textContent = "Play Again";
+                    userInput.classList.toggle("hidden");
+                    userInput.value = "";
+                    // console.log("correct");
+                } else {
+                    message.textContent = `Oops It's InCorrect. Please try again ${randomWords}`;
+                    // console.log("incorrect");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

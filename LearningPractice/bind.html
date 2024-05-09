@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bind Function</title>
+  </head>
+
+  <body>
+    <script>
+      // const youtuber = {
+      //     name: 'CodeWithHarry',
+      //     language: 'Programing',
+      //     features: function(){
+      //         console.log(`My favrite youtube channel is ${this.name}. I love to ${this.language}.`)
+      //     }
+      // }
+
+      // const newFeatures = youtuber.features.bind(youtuber)
+      // newFeatures();
+
+      const youtuber1 = {
+        name: "CodeWithHarry",
+        language: "Data Structure",
+        features: function () {
+          console.log(
+            `My first favrite youtube channel is ${this.name}. I love to ${this.language}.`
+          );
+        },
+      };
+
+      const youtuber2 = {
+        name: "ThapaTechnical",
+        language: "Javascript",
+        features: function () {
+          console.log(
+            `My second favrite youtube channel is ${this.name}. I love to ${this.language}.`
+          );
+        },
+      };
+
+      const youtuber3 = {
+        name: "Yahoo Baba",
+        language: "PHP",
+        features: function () {
+          console.log(
+            `My third favrite youtube channel is ${this.name}. I love to ${this.language}.`
+          );
+        },
+      };
+
+      youtuber1.features.call(youtuber1);
+      youtuber2.features.call(youtuber2);
+      youtuber3.features.call(youtuber3);
+
+      const features1 = youtuber1.features.bind(youtuber1);
+      features1();
+      const features2 = youtuber2.features.bind(youtuber2);
+      features2();
+      const features3 = youtuber3.features.bind(youtuber3);
+      features3();
+    </script>
+  </body>
+</html>

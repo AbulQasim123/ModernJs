@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeSpeed Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <!-- <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        .mainDiv {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background-color: #3498db;
+        }
+
+        .centerDiv {
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            translate: transform(-50%, -50%);
+            text-align: center;
+        }
+
+        h1 {
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            text-shadow: 1px 2px 3px #2980b9;
+            font-size: 2.1rem;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        textarea {
+            background-color: #444;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+            border-radius: 10px 10px 0 0;
+            border: 20px solid #34495e;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .mainBtn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 5px solid #2980b9;
+            background-color: #ecf0f1;
+            font-size: 1rem;
+        }
+    </style> -->
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", sans-serif;
+        }
+
+        body {
+            background-color: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .mainDiv {
+            background-color: #3498db;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .centerDiv {
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            text-transform: capitalize;
+            color: #ecf0f1;
+            text-shadow: 1px 2px 3px #2980b9;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin: 15px 0;
+            color: #ecf0f1;
+        }
+
+        textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #444;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            border: 1px solid #34495e;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+        }
+
+        .mainBtn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            background-color: #ecf0f1;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .mainBtn:hover {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Logic Building of TypeSpeed -->
+    <!--
+        1) When user press start button then only active the textarea else disable it and vice-versa. 
+        2) Every time a new set of line on the top. whenever a start button is pressed. not the done one.
+        3) Get the time and change the button text.
+        4) Get the end time when user clicked on Done Button. find the total time taken. 
+        5) Find the total words on the set of words.
+        6) Find the speed of the user and show it on the top when user clicked on Done.
+        7) Then call the comparewords fun and find how many of the word are matching and how many not. display the result on top with speed
+    -->
+ 
+    <div class="mainDiv">
+        <div class="centerDiv">
+            <h1>Welcome to Typing Speed Test</h1>
+            <h2 id="msg"></h2>
+            <div class="input-container">
+                <textarea name="mywords" id="mywords" cols="80" rows="10" placeholder="Start Typing"></textarea>
+                <p class="wordLength" id="wordLength">Word Count: 0</p>
+            </div>
+            <button class="mainBtn" id="startBtn">Start</button>
+            <button class="mainBtn" id="clearBtn">Clear</button>
+        </div>
+    </div>
+    <script>
+        const setOfWords = [
+            "The quick brown fox jumps over the lazy dog in the park.",
+            "A journey of a thousand miles begins with a single step.",
+            "Life is what happens when you're busy making other plans.",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+            "The only limit to our realization of tomorrow will be our doubts of today.",
+            "Happiness is not something ready made. It comes from your own actions.",
+            "In the midst of winter, I found there was, within me, an invincible summer.",
+            "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+            "The only way to do great work is to love what you do.",
+            "You miss 100% of the shots you don't take.",
+        ];
+
+        const message = document.querySelector("#msg");
+        const typeWords = document.querySelector("#mywords");
+        const btn = document.querySelector("#startBtn");
+        const clearBtn = document.querySelector("#clearBtn");
+        const wordLength = document.querySelector("#wordLength");
+
+        let startTime, endTime;
+        const playGame = () => {
+            let randomNumber = Math.floor(Math.random() * setOfWords.length);
+            msg.textContent = setOfWords[randomNumber];
+            let date = new Date();
+            startTime = date.getTime();
+            btn.textContent = "Done";
+        };
+
+        const endPlay = () => {
+            let date = new Date();
+            endTime = date.getTime();
+            let totalTime = (endTime - startTime) / 1000;
+            let totalStr = typeWords.value;
+            let wordCounts = wordCounter(totalStr);
+            let speed = Math.round((wordCounts / totalTime) * 60);
+            let finalMsg = `You typed total at ${speed} words per minute `;
+            // console.log(finalMsg);
+            finalMsg += compareWords(msg.innerText, totalStr);
+            msg.innerText = finalMsg;
+        };
+
+        const compareWords = (str1, str2) => {
+            let words1 = str1.split(" ");
+            let words2 = str2.split(" ");
+            let count = 0;
+            words1.forEach((word, index) => {
+                if (word == words2[index]) {
+                    count++;
+                }
+            });
+
+            let errorWord = words1.length - count;
+            return `${count} correct out of ${words1.length} words and the total number of error ${errorWord}`;
+        };
+        const wordCounter = (str) => {
+            const trimmedText = str.trim();
+            const words = trimmedText.split(/\s+/);
+            const nonEmptyWords = words.filter((word) => word.length > 0);
+            return nonEmptyWords.length;
+        };
+        typeWords.disabled = true;
+        btn.addEventListener("click", function () {
+            if (this.innerText == "Start") {
+                typeWords.disabled = false;
+                playGame();
+            } else if (this.innerText == "Done") {
+                typeWords.disabled = true;
+                btn.innerText = "Start";
+                endPlay();
+            }
+        });
+
+        // clear the textarea
+        clearBtn.addEventListener("click", () => {
+            typeWords.value = "";
+            wordLength.innerText = "Word Count: 0";
+        });
+
+        typeWords.addEventListener("input", () => {
+            let totalStr = typeWords.value;
+            let wordCounts = wordCounter(totalStr);
+            wordLength.innerText = `Word Count: ${wordCounts}`;
+        });
+    </script>
+</body>
+
+</html>

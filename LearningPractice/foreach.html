@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForEach</title>
+</head>
+
+<body>
+    <script>
+        const myFavLang = [
+            "Javascript",
+            "Python",
+            "C++",
+            "Java",
+            "PHP",
+            "HTML",
+            "CSS",
+        ];
+        for (let x = 0; x < myFavLang.length; x++) {
+            // console.log(myFavLang[x]);
+        }
+        myFavLang.forEach((lang, index) => {
+            // console.log(`${index} : ${lang}`);
+        });
+        const newArray = [10, 20, 30, 40, 50];
+        newArray.forEach((num, index, arr) => {
+            // console.log(arr);
+            // console.log(arr[index] + 100);
+        });
+
+        // For of iterable object like array or string
+        // for (myFavLanguages of "myFavLang") {
+        //     console.log(myFavLanguages);
+        // }
+
+        // For of iterable object like array or string
+        const bioData = {
+            name: "Sachin",
+            age: 30,
+            gender: "male",
+        };
+        for (const key in bioData) {
+            if (Object.hasOwnProperty.call(bioData, key)) {
+                const element = bioData[key];
+                console.table(`${key} : ${element}`);
+            }
+        }
+    </script>
+</body>
+
+</html>

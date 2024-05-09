@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Change Background</title>
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;    
+            height: 100vh;
+        }
+        .center,
+        .project {
+            text-align: center;
+        }
+
+        .center button {
+            font-size: 24px;
+        }
+        .color {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+
+<body>
+    <h3 class="center">
+        "When the Start button is clicked, the background color should change
+        every second; clicking the Stop button should halt the color-changing
+        process."
+    </h3>
+    <div class="center">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </div>
+
+    <div class="project">
+        <div id="insert">
+            <div class="key" style="margin-top: 30px">
+                Press the key and watch magic
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // Generate a random color
+    const randomColor = () => {
+        const hex = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+            color += hex[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    };
+
+    let interverId;
+    function startChangingColor() {
+        if (!interverId) {
+            interverId = setInterval(changeBgColor, 1000);
+        }
+    }
+
+    function changeBgColor() {
+        // document.body.style.backgroundColor = randomColor();
+        const gradient = `linear-gradient(to right, ${randomColor()}, ${randomColor()})`;
+        document.body.style.background = gradient;
+    }
+    function stopChangingColor() {
+        clearInterval(interverId);
+        interverId = null;
+    }
+    document
+        .querySelector("#start")
+        .addEventListener("click", startChangingColor);
+    document
+        .querySelector("#stop")
+        .addEventListener("click", stopChangingColor);
+
+    // Key Press
+    const insert = document.querySelector("#insert");
+    window.addEventListener("keydown", (e) => {
+        insert.innerHTML = `
+        <div class='color'>
+            <table>
+                <tr>
+                    <th>Key</th>
+                    <th>Keycode</th> 
+                    <th>Code</th>
+                </tr>
+                <tr>
+                    <td>${e.key === " " ? "Space" : e.key}</td>
+                    <td>${e.keyCode}</td> 
+                    <td>${e.code}</td>
+                </tr>
+            </table>
+        </div>`;
+    });
+</script>
+
+</html>

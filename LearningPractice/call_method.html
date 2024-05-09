@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Method</title>
+</head>
+
+<body>
+    <script>
+        const youtuberOne = {
+            name: "ThapaTechnical",
+            content: "Programing",
+            feature: function(rating, support){
+                console.log(`Very frindly way of teaching ${this.name} is my favrite ${this.content} language. i would love to give ${rating} start. Please ${support} ${this.name} Channel`);
+            }
+        }
+        youtuberOne.feature(5, "Subcribes");
+
+        const youtuberSecond = {
+            name: "CodeWithHarry",
+            content: "Programing & Design",
+        }
+
+        // youtuberOne.feature.call(youtuberSecond, 5, "Subcribes");
+        
+        youtuberOne.feature.apply(youtuberSecond, [5, "Subcribes"]); // Apply method
+
+        let max = Math.max(1,2,3,4,5,6,7,8,9,10);
+        let maxArray = Math.max.apply(null, [1,2,3,4,5,6,7,8,9,10]);
+        console.log(max);
+        console.log(maxArray);
+    </script>
+</body>
+
+</html>

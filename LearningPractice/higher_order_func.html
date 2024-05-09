@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Higher Order Function</title>
+</head>
+
+<body>
+    <script>
+        // Higher Order Function Example
+        const interviewQuestion = (name) => {
+            if (name === "Robert") {
+                return function (topic) {
+                    console.log(`Hello ${name}, what is ${topic} ? Please explain us`);
+                };
+            }
+            if (name === "Miller") {
+                return function (topic) {
+                    console.log(`Hello ${name}, what is ${topic} ? Please explain us`);
+                };
+            }
+            if (name === "Thomas") {
+                return function (topic) {
+                    console.log(`Hello ${name}, what is ${topic} ? Please explain us`);
+                };
+            } else {
+                console.log("Welcome to interview to get a job");
+            }
+        };
+            // First ways to call higher order function
+        // interviewQuestion("Robert")("Javascript");
+        // interviewQuestion("Miller")("Python");
+        // interviewQuestion("Thomas")("Java");
+
+            // First ways to call higher order function
+        const firstCandidate = interviewQuestion("Robert");
+        firstCandidate("Javascript");
+        firstCandidate("HTML");
+        firstCandidate("CSS");
+        // Second Candidate
+        const secondCandidate = interviewQuestion("Miller");
+        secondCandidate("Ajax");
+        secondCandidate("JSON");
+        secondCandidate("Jquery");
+        // Third Candidate
+        const thirdCandidate = interviewQuestion("Thomas");
+        thirdCandidate("Python");
+        thirdCandidate("Ruby");
+        thirdCandidate("Ruby");
+
+        
+    </script>
+</body>
+
+</html>

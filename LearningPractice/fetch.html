@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fetch API</title>
+</head>
+
+<body>
+    <h2 id="apiData"></h2>
+    <!-- <script>
+        let data = document.querySelector("#apiData");
+        fetch("https://jsonplaceholder.typicode.com/users").then((apiData) => {
+            console.log(apiData);
+            return apiData
+                .json()
+                .then((results) => {
+                    const name = results[0].name;
+                    const lat = results[0].address.geo.lat;
+                    const lng = results[0].address.geo.lng;
+                    const cmpName = results[0].company.name;
+
+                    data.textContent = `The name is: ${name} And Latitude: ${lat} Longitude: ${lng} And Company Name: ${cmpName}`;
+                    // data.innerHTML = `The name is: ${name} And Latitude: ${lat} Longitude: ${lng} And Company Name: ${cmpName}`;
+                    // data.innerText = `The name is: ${name} And Latitude: ${lat} Longitude: ${lng} And Company Name: ${cmpName}`;
+                    // document.write(`<h2>The name is: ${name} And Latitude: ${lat} Longitude: ${lng} And Company Name: ${cmpName}<h2>`);
+                    console.log("Latitude:", lat);
+                    console.log("Longitude:", lng);
+                    console.log("Company Name:", cmpName);
+                })
+                .catch((error) => {
+                    console.log(`The error is: ${error}`);
+                });
+        });
+    </script> -->
+
+    <script>
+        // async await Javascript
+        // try {
+        //     async function getData() {
+        //     let apiData = await fetch("https://jsonplaceholder.typicode.com/users");
+        //     console.log(apiData);
+        //     let jsonData = await apiData.json();
+        //     console.log(jsonData);
+        //     const name = jsonData[0].name;
+        //     console.log(name);
+        // }
+        // getData();
+        // } catch (error) {
+        //     console.log(`The error is: ${error}`);
+        // }
+
+        // async await Javascript
+        // try {
+        //     const getData = async (indexPoint) => {
+        //         let apiData = await fetch(`https://jsonplaceholder.typicode.com/posts/${indexPoint}`);
+        //         console.log(apiData);
+        //         let jsonData = await apiData.json();
+        //         console.log(jsonData);
+        //         const name = jsonData.title;
+        //         console.log(name);
+        //     }
+        //     getData(14);
+        // } catch (error) {
+        //     console.log(`The error is: ${error}`);
+        // }
+
+        // fetch("https://jsonplaceholder.typicode.com/users")
+        //     .then((apiData) => {
+        //         return apiData.json();
+        //     })
+        //     .then((jsonData) => {
+        //         // console.log(jsonData);
+        //         jsonData.forEach((user) => {
+        //             const { id, name, email } = user;
+        //             document.write(`<h2>User ID: ${id}, Name: ${name}, Email: ${email}</h2>`);
+        //         });
+        //     });
+
+        try {
+            async function getData() {
+                const apiData =  await fetch("https://jsonplaceholder.typicode.com/users")
+                const jsonData = await  apiData.json()
+                const userElements = jsonData.map((user) => {
+                    const { id, name, email } = user;
+                    return `<h2 style="font-size: 20px">User ID: ${id}, Name: ${name}, Email: ${email}</h2>`;
+                });
+                document.write(userElements.join(""));
+            }
+            getData()
+        } catch (error) {
+            console.log(`The error is: ${error}`);
+        }
+    </script>
+</body>
+
+</html>

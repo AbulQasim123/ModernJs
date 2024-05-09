@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="css/music.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="main_div">
+        <div class="music_container">
+            <h2 id="title">Teri Meri</h2>
+            <h3 id="artist">Lyrics</h3>
+            <div class="img_container">
+                <img src="images/one.jpg" alt="" />
+            </div>
+            <audio src="music/one.mp3"></audio>
+            <!-- Progress Bar -->
+            <div class="progressbar_container" id="progressbar_container">
+                <div class="progress_duration_meter">
+                    <div id="current_time" style="font-weight:bold;">0.00</div>
+                    <div id="duration" style="font-weight:bold;"></div>
+                </div>
+                <div class="progress_div" id="progress_div">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <div class="music_controls">
+                <i class="fa-solid fa-backward" id="prev" title="Previous"></i>
+                <i class="fa-solid fa-play main_button" id="play" title="Play"></i>
+                <i class="fa-solid fa-forward" id="next" title="Next"></i>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/music.js"></script>
+</body>
+
+</html>

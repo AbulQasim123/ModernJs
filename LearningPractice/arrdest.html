@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Destructuring</title>
+</head>
+
+<body>
+    <script>
+        /*
+              The Destructuring assignment syntax is a Javascript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+          */
+
+        const myfavlang = [
+            "html",
+            "css",
+            "javascript",
+            "python",
+            "php",
+            "c++",
+            "c#",
+            "java",
+            "kotlin",
+            "ruby",
+            "swift",
+        ];
+        // es5
+        // var top1 = myfavlang[0];
+        // var top2 = myfavlang[1];
+        // var top3 = myfavlang[2];
+        // console.log("My favrite language is:"+ top1);
+
+        // es6
+        // let [top1, top2, top3, top4, top5, top6, top7, top8, top9, top10, top11] = myfavlang;
+        // console.log("My favrite language is: "+ top1, top2, top3, top4, top5, top6, top7, top8, top9, top10, top11);
+
+        let [top1, , toplast, , topsecond] = myfavlang;
+        console.log(
+            `My favrite language is: ${top1} and ${toplast}. And my third favourite language is: ${topsecond}`
+        );
+    </script>
+</body>
+
+</html>

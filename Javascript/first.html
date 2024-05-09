@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="h1">Programing is a fun</h1>
+    <button id="stop">Stop</button>
+    <button id="Agree">Agree</button>
+    <button id="disAgree">disAgree</button>
+</body>
+<script>
+    // setTimeout
+    const sayHello = function () {
+        console.log("Hello Javascript");
+    }
+    setTimeout(sayHello, 2000);
+    const changeText = function () {
+        document.querySelector('h1').innerHTML = "Hello Js You are funny";
+    }
+    const stopMe = setTimeout(changeText, 3000)
+    document.querySelector('#stop').addEventListener('click', function () {
+        clearTimeout(stopMe);
+        console.log("Stopped");
+    })
+
+    // setInterval
+    let intervaId;
+    let sayDate;
+    document.querySelector('#Agree').addEventListener('click', function () {
+        sayDate = function (str) {
+            let date = new Date();
+            console.log(`I'm running every 2 second. ${str} ${date.toLocaleString()}`);
+        }
+        intervaId = setInterval(sayDate, 2000, "Time And Time")
+    })
+
+    document.querySelector('#disAgree').addEventListener('click', function () {
+        clearInterval(intervaId);
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="logo">This is para</p>
+</body>
+<script>
+    // What is a Cookie
+    // document.cookie = "name=Sudheer";
+
+    // localStorage.setItem("para", document.getElementById("logo").textContent);
+    // console.log(localStorage.getItem("para"));
+
+    // Save data to sessionStorage
+    // sessionStorage.setItem("test1", "This is my testing1");
+    // sessionStorage.setItem("test2", "This is my testing2");
+    // Get saved data from sessionStorage
+    // let data1 = sessionStorage.getItem("test1");
+    // console.log(data);
+
+    // Remove saved data from sessionStorage
+    // sessionStorage.removeItem("test");
+
+    // Remove all saved data from sessionStorage
+    // sessionStorage.clear();
+
+    // How do you check web storage browser support
+    console.log(typeof Storage);
+    if (typeof Storage !== "undefined") {
+        console.log("Web Storage is supported!");
+    } else {
+        console.log("Sorry! No Web Storage support..");
+    }
+
+    // How do you check web workers browser support
+    console.log(typeof Worker);
+    if (typeof Worker !== "undefined") {
+        console.log("Web Worker is supported!");
+    } else {
+        console.log("Sorry! No Web Worker support..");
+    }
+
+    // What is a promise
+    // const promise = new Promise( function (resolve, reject){
+    //     console.log("Here is gone promise");
+    // })
+
+    // Why do you need a promise
+    // Promises are used to handle asynchronous operations. They provide an alternative approach for callbacks by reducing the callback hell and writing the cleaner code.
+    // const promise = new Promise(
+    //     (resolve) => {
+    //         setTimeout(() => {
+    //             resolve("I'm a Promise!");
+    //         }, 2000);
+    //     },
+    //     (reject) => {
+    //         console.log("Something went wrong");
+    //     }
+    // )
+    // promise.then((value) => console.log(value));
+
+    // What is a callback function
+    // A callback function is a function passed into another function as an argument.
+    // function firstFunciton (name) {
+    //     console.log(`Hello ${name}`);
+    // }
+    // function secondFunction(){
+    //     let name = prompt("Please enter your name.");
+    //     firstFunciton(name);
+    // }
+    // firstFunciton();
+    // secondFunction();
+
+    function thirdFunction() {
+        setTimeout(function () {
+            console.log("Third function called after 3 seconds");
+        }, 3000)
+    }
+    function fourthFunction() {
+        console.log("Fourth function called");
+    }
+    thirdFunction();
+    fourthFunction();
+
+    // What is the purpose of the delete operator
+    // The delete operator is used to delete the property as well as its value.
+
+    var user = { firstName: "John", lastName:"Doe", age: 20 };
+    delete user.age;
+    console.log(user);
+</script>
+
+</html>

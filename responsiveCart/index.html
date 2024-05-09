@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link id="favicon" rel="icon" href="../bg.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Response Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+</head>
+
+<body class="btn-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-11 mx-auto">
+                <div class="row mt-5 gx-3">
+                    <!-- Left side div -->
+                    <div class="col-md-12 col-lg-8 col-11 mx-auto main-cart mb-lg-0 mb-5 shadow">
+                        <div class="card p4 main_cart">
+                            <h4 class="py-4 font-weight-bold">Cart (2 items)</h4>
+                            <div class="row">
+                                <!-- Cart Image Div -->
+                                <div
+                                    class="col-md-4 col-11 mx-auto bg-light mb-4 d-flex justify-content-center align-items-center shadow product_img">
+                                    <img src="image/shirt3.jpeg" class="img-fluid" alt="Cart Image" />
+                                </div>
+                                <!-- Cart Product Details -->
+                                <div class="col-md-8 col-11 mx-auto px-4 mt-2">
+                                    <div class="row">
+                                        <div class="col-5 cart-title">
+                                            <div class="mb-4 product_name text-uppercase">
+                                                blue zara shirt
+                                            </div>
+                                            <p class="mb-2 text-uppercase">shirt - light blue</p>
+                                            <p class="mb-2 text-uppercase">color - light blue</p>
+                                            <p class="mb-3 text-uppercase">size - m</p>
+                                        </div>
+                                        <!-- Manage quantity increment/decrement -->
+                                        <div class="col-7">
+                                            <ul class="pagination justify-content-end set_quantity">
+                                                <li class="page-item">
+                                                    <button class="page-link" onclick="decrementQuantity('quantity','itemval')"><i
+                                                            class="fas fa-minus"></i></button>
+                                                </li>
+                                                <li class="page-item">
+                                                    <input class="page-link" readonly type="text" name="quantity"
+                                                        id="quantity" value="0" />
+                                                </li>
+                                                <li class="page-item">
+                                                    <button class="page-link" onclick="incrementQuantity('quantity','itemval')"><i
+                                                            class="fas fa-plus"></i></button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Remove wish and price -->
+                                    <div class="row">
+                                        <div class="col-8 d-flex justify-content-between remove_wish">
+                                            <p>
+                                                <i class="fas fa-trash-alt"></i> Remove Items
+                                            </p>
+                                            <p>
+                                                <i class="fas fa-heart"></i> Move to wish list
+                                            </p>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-end price_money">
+                                            <h4>$<span id="itemval">0.00</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!-- 2nd cart -->
+                        <div class="card p4 main_cart">
+                            <!-- <h2 class="py-4 font-weight-bold">Cart (2 items)</h2> -->
+                            <div class="row">
+                                <!-- Cart Image Div -->
+                                <div
+                                    class="col-md-4 col-11 mx-auto bg-light mb-4 d-flex align-items-center align-item-center shadow product_img">
+                                    <img src="image/shirt4.jpeg" class="img-fluid w-75 h-75 images" alt="Cart Image" />
+                                </div>
+                                <!-- Cart Product Details -->
+                                <div class="col-md-8 col-11 mx-auto px-4 mt-2">
+                                    <div class="row">
+                                        <div class="col-5 cart-title">
+                                            <div class="mb-4 product_name text-uppercase">
+                                                blue zara shirt
+                                            </div>
+                                            <p class="mb-2 text-uppercase">shirt - blue</p>
+                                            <p class="mb-2 text-uppercase">color - blue</p>
+                                            <p class="mb-3 text-uppercase">size - m</p>
+                                        </div>
+                                        <!-- Manage quantity increment/decrement -->
+                                        <div class="col-7">
+                                            <ul class="pagination justify-content-end set_quantity">
+                                                <li class="page-item">
+                                                    <button class="page-link" onclick="decrementQuantity('quantity1','itemval1')">
+                                                        <i class="fas fa-minus"></i>
+                                                    </button>
+                                                </li>
+                                                <li class="page-item">
+                                                    <input class="page-link" type="text" readonly name="quantity1"
+                                                        id="quantity1" value="0" />
+                                                </li>
+                                                <li class="page-item">
+                                                    <button class="page-link" onclick="incrementQuantity('quantity1','itemval1')">
+                                                        <i class="fas fa-plus"></i>
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Remove wish and price -->
+                                    <div class="row">
+                                        <div class="col-8 d-flex justify-content-between remove_wish">
+                                            <p>
+                                                <i class="fas fa-trash-alt"></i> Remvoe
+                                                Items
+                                            </p>
+                                            <p>
+                                                <i class="fas fa-heart"></i> Move to wish
+                                                list
+                                            </p>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-end price_money">
+                                            <h4>$<span id="itemval1">0.00</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right side div -->
+                    <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+                        <div class="right_side p-3 shadow bg-white">
+                            <h5 class="product_name mb-5 text-uppercase">
+                                the total amount of
+                            </h5>
+                            <div class="price_indiv d-flex justify-content-between">
+                                <p>Product Amount</p>
+                                <p>$<span id="product_total_amt">0.00</span></p>
+                            </div>
+                            <div class="price_indiv d-flex justify-content-between">
+                                <p>Product Charge</p>
+                                <p>$<span id="shipping_charge">25.00</span></p>
+                            </div>
+                            <hr>
+                            <div class="total_amt d-flex justify-content-between fw-bold">
+                                <p>The total amount of (including VAT)</p>
+                                <p>$<span id="total_cart_amount">0.00</span></p>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm text-uppercase">
+                                checkout
+                            </button>
+                        </div>
+                        <!-- Discount code part -->
+                        <div class="discount_code mt-3 shadow">
+                            <div class="card">
+                                <div class="card-body">
+                                    <a class="d-flex justify-content-between" data-bs-toggle="collapse"
+                                        href="#collapseExample" role="button" aria-expanded="false"
+                                        aria-controls="collapseExample">
+                                        Add a discount code (optional)
+                                        <span><i class="fas fa-chevron-down pt-1"></i></span>
+                                    </a>
+                                    <div class="collapse" id="collapseExample">
+                                        <div class="mt-3">
+                                            <input type="text" class="form-control font-weight-bold"
+                                                name="discount_code1" id="discount_code1"
+                                                placeholder="Enter the discount code" />
+                                            <small id="error_trw" class="text-dark mt-3">code is Abul</small>
+                                        </div>
+                                        <button type="button" class="btn btn-primary btn-sm mt-3"
+                                            onclick="discountCode()">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- discount code end -->
+                        <div class="mt-3 shadow p-3 bg-white">
+                            <div class="pt-4">
+                                <h5 class="mb-4">Expectd delivery date</h5>
+                                <p>July 27 2023 July 29 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
