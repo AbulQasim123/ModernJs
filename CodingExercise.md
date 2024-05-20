@@ -1901,4 +1901,4 @@ console.log("End code");
 	Even though there is a timer of 5 seconds supplied to setTimeout callback, it won't get executed until the main thread is free and finished executing the remaining part of the code. In this example, the remaining code(while loop) takes 10seconds to finish it's execution. In the mean time, the callback will be stored in callback queue upon completion of its 5 seconds timer. After 10 seconds, the callback will be moved to callstack because the callstack is empty by poping out global execution context.
 </details>
 
-<h4>Good luck with your interview 😊</h4>
+<h1>Good luck with your interview 😊</h1>
