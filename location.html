@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoLocation</title>
+    <link rel="shortcut icon" href="#" />
+    <!-- <style>
+        body {
+            padding: 20px;
+            background-color: #ffffc9;
+        }
+
+        button {
+            margin: 0.5rem 0;
+        }
+    </style> -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- <button id="find-me">Show my location</button><br />
+    <p id="status"></p>
+    <a id="map-link" target="_blank"></a> -->
+
+    <script>
+      // const findMe = document.querySelector("#find-me");
+      // function geoFindMe() {
+      //     const status = document.querySelector("#status");
+      //     const mapLink = document.querySelector("#map-link");
+      //     mapLink.href = "";
+      //     mapLink.textContent = "";
+
+      //     function success(position) {
+      //         const latitude = position.coords.latitude;
+      //         const longitude = position.coords.longitude;
+
+      //         // Use a reverse geocoding service to get the location name
+      //         fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
+      //             .then(response => response.json())
+      //             .then(data => {
+      //                 const locationName = data.display_name;
+      //                 status.textContent = `Location: ${locationName}`;
+      //             })
+      //             .catch(error => {
+      //                 status.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
+      //             });
+
+      //         mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+      //         mapLink.textContent = `View on Map`;
+      //     }
+
+      //     function error() {
+      //         status.textContent = "Unable to retrieve your location";
+      //     }
+
+      //     if (!navigator.geolocation) {
+      //         status.textContent = "Geolocation is not supported by your browser";
+      //     } else {
+      //         status.textContent = "Locating…";
+      //         navigator.geolocation.getCurrentPosition(success, error);
+      //     }
+      // }
+      // findMe.addEventListener("click", geoFindMe);
+    </script>
+
+    <script>
+      // var object = {
+      //     name: "Sudheer",
+      //     age: 34
+      // };
+      // console.log(object)
+
+      /***
+            What is the difference between Call, Apply and Bind
+            The difference between Call, Apply and Bind can be explained with below examples,
+        ***/
+      // let employeeone = { firstName: "Rohit", lastName: "Kumar" };
+      // let employeetwo = { firstName: "Rahul", lastName: "Singh" };
+      // function invite(greeting, question) {
+      //     console.log(`${greeting} ${this.firstName} ${this.lastName}, ${question}`);
+      // }
+      // invite.call(employeeone, "Hello", "How are you?");
+      // invite.call(employeetwo, "Hello", "How are you?");
+
+      // Apply: Invokes the function with a given this value and allows you to pass in arguments as an array
+      // let empone = { firstName: "Abul", lastName: "Qasim" };
+      // let emptwo = { firstName: "Kamran", lastName: "Ansari" };
+      // function invite(greeting, question) {
+      //     console.log(`${greeting} ${this.firstName} ${this.lastName}, ${question}`);
+      // }
+      // invite.apply(empone, ["Hello", "How are you?"]);
+      // invite.apply(emptwo, ["Hello", "How are you?"]);
+
+      // Bind: returns a new function, allowing you to pass any number of arguments
+      var emp1 = { firstName: "Talib", lastName: "Ansari" };
+      var emp2 = { firstName: "Vikas", lastName: "Mishra" };
+      function invite(greeting, question) {
+        console.log(
+          `${greeting} ${this.firstName} ${this.lastName}, ${question}`
+        );
+      }
+      var inviteEmployee1 = invite.bind(emp1);
+      var inviteEmployee2 = invite.bind(emp2);
+      inviteEmployee1("Hello", "How are you?");
+      inviteEmployee2("Hello", "How are you?");
+
+      // Parsing: Converting a string to a native object
+      let jsonString = '{"greeting": "Hello", "target": "world"}';
+      let parsedObject = JSON.parse(jsonString);
+      console.log(parsedObject);
+
+      // Stringification: Converting a native object to a string so that it can be transmitted across the network
+      let jsonObject = { greeting: "Hello", target: "world" };
+      let stringifiedObject = JSON.stringify(jsonObject);
+      console.log(stringifiedObject);
+
+      /***** 
+            What is the purpose of the array slice method
+            The slice() method returns the selected elements in an array as a new array object.
+        *****/
+      let arrayIntegers = [1, 2, 3, 4, 5];
+      let slicedArray1 = arrayIntegers.slice(3, 4);
+      let slicedArray2 = arrayIntegers.slice(2, 3);
+      let slicedArray3 = arrayIntegers.slice(4);
+      console.log(slicedArray1, slicedArray2, slicedArray3);
+
+      // What is the purpose of the array splice method
+      let arrayIntegersOriginal1 = [1, 2, 3, 4, 5];
+      let arrayIntegersOriginal2 = [1, 2, 3, 4, 5];
+      let arrayIntegersOriginal3 = [1, 2, 3, 4, 5];
+
+      // let arrayIntegers1 = arrayIntegersOriginal1.splice(0, 2);
+      // let arrayIntegers2 = arrayIntegersOriginal2.splice(3);
+      let arrayIntegers3 = arrayIntegersOriginal3.splice(3, 1, "a", "b", "c");
+      console.log(arrayIntegers3);
+      console.log(arrayIntegersOriginal3);
+
+      // What is the difference between == and === operators
+      console.log(0 == false);
+      console.log(0 === false);
+      console.log(1 == "1");
+      console.log(1 === "1");
+      console.log(null == undefined);
+      console.log(null === undefined);
+      console.log("0" == false);
+      console.log("0" === false);
+
+      // What are lambda or arrow functions
+      class StudentDetails {
+        constructor(name, cgpa) {
+          this.name = name;
+          this.cgpa = cgpa;
+        }
+
+        displayStrings() {
+          console.log(`student_name = ${this.name}, and = ${this.cgpa}`);
+        }
+      }
+      let student = new StudentDetails("Talib", 3.8);
+      student.displayStrings();
+
+      // const object = {};
+      // object.message = "Hello";
+      // object.showMessage = function () {
+      //     document.addEventListener("click", () =>
+      //         alert(this.message)
+      //     );
+      // }
+      // object.showMessage();
+      // console.log(object.message);
+
+      // const handler = () => console.log("This is a click handler function");
+      // document.addEventListener("click", handler);
+
+      // first Order funciton in javascript
+      const firstOrder = () => console.log("I am a first order function!");
+      firstOrder();
+
+      // Higher order funciton
+      const firstOrderFunc = () =>
+        console.log("Hello, I am a First order function");
+      const higherOrder = (ReturnFirstOrderFunc) => ReturnFirstOrderFunc();
+      higherOrder(firstOrderFunc);
+
+      // What is a unary function
+      const unaryFunction = (name, age) =>
+        console.log(`Hello ${name}, your age is ${age}`);
+      unaryFunction("AbulQasim", 23);
+
+      // What is the currying function
+      const multiArgFunc = (a, b, c) => a + b + c;
+      // console.log(multiArgFunc(1,2,3));
+
+      const curryUnaryFunction = (a) => (b) => (c) => a + b + c;
+      // console.log(curryUnaryFunction(1));
+      // console.log(curryUnaryFunction(1)(2));
+      // console.log(curryUnaryFunction(1)(2)(4));
+
+      // What is pure function
+      // Impure
+      let numberArray = [];
+      const impureAddNumber = (number) => numberArray.push(number);
+      // Pure
+      const pureAddNumber = (number) => (argNumberArray) =>
+        argNumberArray.concat([number]);
+      // console.log(impureAddNumber(6));
+      // console.log(numberArray);
+      // console.log(pureAddNumber(8)(numberArray));
+      // console.log(numberArray);
+
+      // What is the purpose of the let keyword
+      // let counter = 30;
+      // if(counter === 30){
+      //     let counter = 31;
+      //     console.log(counter);
+      // }
+      // console.log(counter);
+
+      // let an example
+      function userDetails(username) {
+        if (username) {
+          console.log(salary);
+          let age = 32;
+          var salary = 15000;
+          console.log(age);
+        }
+        console.log(salary);
+        // console.log(age);
+      }
+      userDetails("James");
+    </script>
+    <script></script>
+  </body>
+</html>
