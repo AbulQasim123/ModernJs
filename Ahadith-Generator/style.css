@@ -1,124 +1,110 @@
-/* Reset styles */
-html,
-body,
-div,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-img,
-ul,
-ol,
-li,
-form,
-label {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-}
-
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: rgb(155, 109, 209);
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .containers {
-    width: 680px;
-    background-color: rgb(212, 212, 212);
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header {
-    font-size: 34px;
-    font-weight: bold;
-    text-align: center;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-bottom: 20px;
+}
+
+.bookInfo {
+  margin-bottom: 20px;
+}
+
+.bookInfo p {
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.bookInfo p span {
+  font-weight: bold;
+  color: #4caf50;
 }
 
 .content {
-    margin-top: 34px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .textarea {
-    text-align: center;
+  margin-bottom: 20px;
 }
 
 .hadith {
-    font-family: 'Nunito Sans', sans-serif;
-    font-style: italic;
-    font-size: 24px;
-    margin-bottom: 20px;
+  font-size: 20px;
+  font-style: italic;
+  text-align: center;
+  color: #555;
 }
 
 .buttons {
-    margin-top: 20px;
-    text-align: center;
+  text-align: center;
 }
 
-.feature {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.feature ul {
+  list-style-type: none;
+  padding: 0;
+  display: inline-block;
+  margin-right: 20px;
 }
 
-.feature i {
-    margin-right: 10px;
+.feature ul li {
+  font-size: 24px;
+  cursor: pointer;
+  color: #4caf50;
 }
 
 .newButton {
-    color: #eee;
-    border: 1px solid #afafaf;
-    background-color: rgb(150, 110, 150);
-    padding: 10px 20px;
-    border-radius: 7px;
-    cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .newButton:hover {
-    border: 1px solid #5e055e;
-    background-color: rgb(216, 193, 228);
-    color: #fff;
-    transition-duration: 0.5s;
+  background-color: #45a049;
 }
 
-/* CSS */
-/* CSS */
-.feature {
-    display: flex;
-    align-items: center;
-    /* Align items vertically in the center */
+.sound:hover {
+  color: #45a049;
 }
 
-.sound {
-    list-style: none;
-    color: rgb(150, 110, 150);
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 25px;
-}
+/* Responsive design for smaller screens */
+@media (max-width: 576px) {
+  .containers {
+    padding: 15px;
+    margin: 20px;
+  }
 
+  header {
+    font-size: 24px;
+  }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
+  .hadith {
+    font-size: 18px;
+  }
+
+  .newButton {
+    width: 100%;
+  }
 }
